@@ -29,6 +29,6 @@ export class LoginComponent implements OnInit {
   }
 
   navegarHome() {
-    // this.router.navigate(['pedido', 'nuevo'])
+    this.router.navigate(['tipo-de-pedido'])
   }
 }
