@@ -1,0 +1,41 @@
+<div class="login-container">
+    <div class="logo-container">
+      <img src="../assets/logo.png" alt="logo"/>
+    </div>
+    <div class="login-form-container">
+      <h1 style="color: #333; font-size: 1.5rem; font-weight: 500;">Iniciar Sesión</h1>
+      <p style="color: rgb(152, 158, 177); font-size: 0.9rem;">Bienvenido de vuelta!</p>
+      <form [formGroup]="loginForm" (ngSubmit)="login()">
+        <mat-form-field style="width: 100%">
+          <mat-label>Email</mat-label>
+          <input matInput type="email" formControlName="username" placeholder="example@email.com"/>
+        </mat-form-field>
+        <mat-form-field style="width: 100%">
+          <mat-label>Contraseña</mat-label>
+          <input matInput type="password" formControlName="password"/>
+        </mat-form-field>
+        <div>
+          <button mat-raised-button style="width: 100%; background: rgb(255, 168, 52); font-weight: 600; color: #fff; font-size: 1rem; padding: 1.5rem;">
+            Iniciar Sesión
+          </button>
+        </div>
+      </form>
+    </div>
+    <div style="margin: 1rem 0 2rem;">
+      <p style="color: rgb(152, 158, 177); font-size: 0.9rem; text-align: center; margin: 1rem 0 1.8rem;">o conectacte con una red</p>
+      <div style="display: flex; justify-content: space-around;">
+        <button mat-flat-button style="font-size: 0.9rem; width: 100%; background: rgb(235, 235, 235); font-weight: 600; margin-right: 0.25rem;">
+          <img src="../assets/icons/google-icon.png" class="social_media-icon">
+          Google
+        </button>
+        <button mat-flat-button style="font-size: 0.9rem; width: 100%; background: rgb(59, 89, 152); color: #fff; font-weight: 600; margin-left: 0.25rem">
+          <img src="../assets/icons/gacebook_icon.png" class="social_media-icon">
+          Facebook
+        </button>
+      </div>
+    </div>
+    <div style="display: flex; flex-direction: row; justify-content: space-around;">
+      <span style="font-size: 0.9rem; color: #989eb1;">¿Olvidaste tu contraseña?</span>
+      <a style="font-size: 0.9rem; color: #f85f6a; font-weight: 500;">Registrate</a>
+    </div>
+  </div>

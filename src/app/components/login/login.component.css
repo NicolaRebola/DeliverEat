@@ -1,0 +1,25 @@
+.login-container {
+    display: flex;
+    flex-direction: column;
+    margin: auto;
+    width: max(280px, 80%);
+    justify-content: center;
+    height: 100%;
+}
+
+.logo-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.logo-container img {
+    height: 10rem;
+    aspect-ratio: 1.5/1;
+}
+
+.social_media-icon {
+    width: 0.9rem;
+    aspect-ratio: 1/1;
+    margin: 0 0.4rem;
+}
