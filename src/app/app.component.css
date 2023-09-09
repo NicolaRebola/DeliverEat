@@ -1,0 +1,24 @@
+::ng-deep .title {
+    color: #333;
+    font-size: 1.5rem;
+    font-weight: 500;
+}
+
+::ng-deep .subtitle {
+    color: rgb(152, 158, 177);
+    font-size: 0.9rem;
+}
+
+::ng-deep .primary-button {
+    width: 100%;
+    background: rgb(255, 168, 52) !important;
+    font-weight: 600;
+    color: #fff !important;
+    font-size: 1rem;
+    padding: 1.5rem !important;
+}
+
+::ng-deep .accent-color {
+    color: #f85f6a;
+    font-weight: 500;
+}
