@@ -1,0 +1,51 @@
+.login-container {
+    display: flex;
+    flex-direction: column;
+    margin: auto;
+    width: max(280px, 80%);
+    justify-content: center;
+    height: 100%;
+}
+
+.logo-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.logo-container img {
+    height: 10rem;
+    aspect-ratio: 1.5/1;
+}
+
+.social_media-container {
+    margin: 1rem 0 2rem;
+}
+
+.social_media-subtitle {
+    text-align: center;
+    margin: 1rem 0 1.8rem;
+}
+
+.social_media-button {
+    font-size: 0.9rem;
+    width: 100%; 
+    font-weight: 600;
+}
+
+.social_media-google {
+    background-color: rgb(235, 235, 235) !important;
+    margin-right: 0.25rem;
+}
+
+.social_media-facebook {
+    background-color: rgb(59, 89, 152) !important;
+    color: #fff !important;
+    margin-left: 0.25rem;
+}
+
+.social_media-icon {
+    width: 0.9rem;
+    aspect-ratio: 1/1;
+    margin: 0 0.4rem;
+}

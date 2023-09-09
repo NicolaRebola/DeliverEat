@@ -1,0 +1,41 @@
+<div class="login-container">
+    <div class="logo-container">
+      <img src="../assets/logo.png" alt="logo"/>
+    </div>
+    <div class="login-form-container">
+      <h1 class="title">Iniciar Sesión</h1>
+      <p class="subtitle">Bienvenido de vuelta!</p>
+      <form [formGroup]="loginForm" (ngSubmit)="login()">
+        <mat-form-field style="width: 100%">
+          <mat-label>Email</mat-label>
+          <input matInput type="email" formControlName="username" placeholder="example@email.com"/>
+        </mat-form-field>
+        <mat-form-field style="width: 100%">
+          <mat-label>Contraseña</mat-label>
+          <input matInput type="password" formControlName="password"/>
+        </mat-form-field>
+        <div>
+          <button mat-raised-button class="primary-button">
+            Iniciar Sesión
+          </button>
+        </div>
+      </form>
+    </div>
+    <div class="social_media-container">
+      <p class="subtitle social_media-subtitle">o conectacte con una red</p>
+      <div style="display: flex; justify-content: space-around;">
+        <button class="social_media-button social_media-google" mat-flat-button>
+          <img src="../assets/icons/google-icon.png" class="social_media-icon">
+          Google
+        </button>
+        <button class="social_media-button social_media-facebook" mat-flat-button>
+          <img src="../assets/icons/gacebook_icon.png" class="social_media-icon">
+          Facebook
+        </button>
+      </div>
+    </div>
+    <div style="display: flex; flex-direction: row; justify-content: space-around;">
+      <span class="subtitle">¿Olvidaste tu contraseña?</span>
+      <a class="subtitle accent-color">Registrate</a>
+    </div>
+  </div>
