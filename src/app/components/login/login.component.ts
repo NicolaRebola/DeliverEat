@@ -1,21 +1,34 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { LoginService } from './login.service';
+import { Usuarios } from 'src/app/mock';
 
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css']
 })
-export class LoginComponent {
+export class LoginComponent implements OnInit {
   loginForm = new FormGroup({
     username: new FormControl('', [Validators.email, Validators.required]),
     password: new FormControl('', [Validators.required]),
   });
 
-  constructor(private router: Router) {}
+  constructor(private router: Router, private loginService: LoginService) {}
+
+  ngOnInit(): void {
+    if (this.loginService.hayUsuarioLogueado()) this.navegarHome();
+  }
 
   login() {
-    // TO-DO
+    if (this.loginForm.invalid) return;
+    const usuario = this.loginForm.value.username ? this.loginForm.value.username : '';
+    const contraseña = this.loginForm.value.password ? this.loginForm.value.password : '';
+    if (this.loginService.login(usuario, contraseña)) this.navegarHome();
+  }
+
+  navegarHome() {
+    // this.router.navigate(['pedido', 'nuevo'])
   }
 }
