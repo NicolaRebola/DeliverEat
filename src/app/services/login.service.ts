@@ -1,5 +1,5 @@
 import { Injectable } from "@angular/core";
-import { Usuarios } from '../../mock/index';
+import { Usuarios } from '../mock/index';
 import { CookieService } from "ngx-cookie-service";
 
 @Injectable({

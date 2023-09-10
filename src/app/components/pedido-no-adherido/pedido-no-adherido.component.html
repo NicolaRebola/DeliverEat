@@ -1,35 +1,44 @@
 <div class="no-adherido-container">
-    <h1 class="title">Lugar no listado</h1>
-    <h2 class="subtitle">¿Qué necesitas?</h2>
+    <h1 class="subtitle primary-text">Lugar no listado</h1>
+    <p class="title">¿Qué necesitas?</p>
     <form [formGroup]="pedidoForm" (ngSubmit)="setPedidoDetails()">
+        <mat-form-field style="width: 100%;">
+            <mat-label>Producto</mat-label>
+            <textarea matInput formControlName="producto" placeholder="Es una caja marrón..."></textarea>
+        </mat-form-field>
+        <div class="file-container">
+            <div style="display: flex; align-items: flex-end; flex-direction: row; justify-content: center;">
+                <img src="../../../assets/icons/image.svg" class="image-icon">
+                <input #imageCtrl type="file" class="file-control" multiple accept="image/jpg" (change)="onImageCharged(imageCtrl)">
+            </div>
+            <p class="file-hint primary-text">Agrega una imagen para ayudar a identificar tu pedido</p>
+        </div>
         <mat-form-field style="width: 100%">
             <mat-label>Ciudad</mat-label>
-            <mat-select>
+            <mat-select formControlName="ciudad">
                 <mat-option *ngFor="let ciudad of ciudades" [value]="ciudad">
                     {{ciudad}}
                 </mat-option>
             </mat-select>
         </mat-form-field>
         <mat-form-field style="width: 100%">
-            <mat-label>Dirección de entrega</mat-label>
-            <input matInput type="text" placeholder="Avenida Siempre Viva 742" />
-        </mat-form-field>
-        <mat-form-field style="width: 100%">
-            <mat-label>Producto</mat-label>
-            <textarea matInput type="text" placeholder="Es una caja marrón..."> </textarea>
-        </mat-form-field>
-        <div style="width: 100%">
-            <mat-label>Foto del producto</mat-label>
-            <input type="file"/>
-        </div>
-        <mat-form-field style="width: 100%">
             <mat-label>Dirección de retiro</mat-label>
-            <input matInput type="text" placeholder="Avenida Siempre Viva 742" />
+            <input matInput type="text" formControlName="direccionRetiro" placeholder="Avenida Siempre Viva 742" />
+        </mat-form-field>
+        <mat-form-field style="width: 100%">
+            <mat-label>Dirección de entrega</mat-label>
+            <input matInput type="text" formControlName="direccionEntrega" placeholder="Avenida Siempre Viva 742" />
         </mat-form-field>
     </form>
-    <div class="continue-button">
-        <button mat-fab color="primary" aria-label="Continuar">
-          <mat-icon>east</mat-icon>
-        </button>
+    <div class="actions-container">
+        <div class="previous-button" (click)="navigateTo(['tipo-de-pedido'])">
+            <mat-icon class="primary-text prev-icon">west</mat-icon>
+        </div>
+        <div class="continue-button" (click)="setPedidoDetails()">
+            <span class="continue-button_label">Continuar</span>
+            <button mat-mini-fab class="primary-button next-button" aria-label="Continuar">
+              <mat-icon>east</mat-icon>
+            </button>
+        </div>
     </div>
 </div>

@@ -1,6 +1,9 @@
-import { Component } from '@angular/core';
-import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { Component, ElementRef, ViewChild } from '@angular/core';
+import { FormGroup, FormControl, Validators, FormBuilder } from '@angular/forms';
+import { MatSnackBar } from '@angular/material/snack-bar';
+import { Router } from '@angular/router';
 import { Ciudades } from 'src/app/mock/Ciudades.mock';
+import { Pedido, PedidoService, TipoPedido } from 'src/app/services/pedido.service';
 
 @Component({
   selector: 'app-pedido-no-adherido',
@@ -9,16 +12,41 @@ import { Ciudades } from 'src/app/mock/Ciudades.mock';
 })
 
 export class PedidoNoAdheridoComponent {
+  file?: File;
   ciudades = Ciudades;
-  pedidoForm = new FormGroup({
-    ciudadEntrega: new FormControl('', [Validators.required]),
-    direccionEntrega: new FormControl('', [Validators.required]),
-    producto: new FormControl('', [Validators.required]),
-    foto: new FormControl(''),
-    direcccionRetiro: new FormControl('', [Validators.required]),
-  });
+  pedidoForm: FormGroup;
 
-  setPedidoDetails(){
+  constructor(private snackbar: MatSnackBar, private pedidoService: PedidoService, private router: Router) {
+    const fb = new FormBuilder();
+    this.pedidoForm = fb.nonNullable.group({
+      ciudad: new FormControl('', { nonNullable: true, 'validators': [Validators.required] }),
+      direccionEntrega: new FormControl('', { nonNullable: true, 'validators': [Validators.required] }),
+      producto: new FormControl('', { nonNullable: true, 'validators': [Validators.required] }),
+      direccionRetiro: new FormControl('', { nonNullable: true, 'validators': [Validators.required] }),
+    })
+  }
 
+  setPedidoDetails() {
+    if (!this.pedidoForm.valid) {
+      this.snackbar.open('Oops! Todos los campos son obligatorios.', undefined, { duration: 1000, panelClass: 'error_message' })
+      return;
+    }
+    const { ciudad, direccionEntrega, producto, direccionRetiro } = this.pedidoForm.value;
+    this.pedidoService.setPedidoActual(new Pedido(TipoPedido.LO_QUE_SEA, producto, ciudad, direccionRetiro, direccionEntrega, this.file));
+    // this.navigateTo([''])
+  }
+
+  onImageCharged(event: any): void {
+    const file = event.files[0];
+    try {
+      this.pedidoService.validarImagen(file);
+      this.file = file;
+    } catch(err: any) {
+      this.snackbar.open(err.message, undefined, { duration: 1000, panelClass: 'error_message' })
+    }
+  }
+
+  navigateTo(route: string[]) {
+    this.router.navigate(route);
   }
 }

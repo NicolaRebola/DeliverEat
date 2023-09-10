@@ -1,0 +1,99 @@
+.no-adherido-container {
+    margin: 0 0.5rem;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+.no-adherido-container > .subtitle {
+    text-align: center;
+    font-size: 1.2rem;
+    font-weight: 400;
+    flex: 0;
+}
+
+.no-adherido-container > .title {
+    font-size: 1.2rem;
+    display: flex;
+    flex-direction: row;
+    align-items: flex-end;
+    margin: 2rem 0 0 0;
+    flex: 0;
+}
+
+.no-adherido-container > form {
+    overflow: auto;
+    flex: 1;
+}
+
+.file-container {
+    width: 90%;
+    margin: 0.5rem auto;
+    display: flex;
+    flex-direction: column;
+}
+
+.image-icon {
+    opacity: 0.3;
+    width: 7rem;
+}
+
+.file-control {
+    color: transparent;
+    width: 36px;
+    position: absolute;
+    right: 35%;
+}
+.file-control::-webkit-file-upload-button {
+    visibility: hidden;
+}
+
+.file-control:before {
+    content: '+';
+    color: #fff;
+    display: inline-block;
+    background: rgb(255, 168, 52);
+    border-radius: 2rem;
+    padding: 0.2rem 0.7rem;
+    outline: none;
+    white-space: nowrap;
+    -webkit-user-select: none;
+    cursor: pointer;
+    font-weight: 700;
+    font-size: 24px;
+}
+
+.file-hint {
+    font-size: 12px;
+}
+
+.actions-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    flex: 0;
+    margin-bottom: 1rem;
+}
+
+.previous-button,
+.continue-button {
+    display: flex;
+    align-items: center;
+}
+
+.prev-icon {
+    font-size: 2rem;
+    width: 2rem;
+    height: 2rem;
+}
+
+.continue-button_label {
+    margin: 0 0.5rem;
+    font-weight: 500;
+    color: #333;
+}
+
+.next-button {
+    font-size: 24px;
+    padding: 0 !important;
+}
