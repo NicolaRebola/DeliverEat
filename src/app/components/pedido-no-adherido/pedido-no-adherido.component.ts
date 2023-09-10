@@ -33,7 +33,7 @@ export class PedidoNoAdheridoComponent {
     }
     const { ciudad, direccionEntrega, producto, direccionRetiro } = this.pedidoForm.value;
     this.pedidoService.setPedidoActual(new Pedido(TipoPedido.LO_QUE_SEA, producto, ciudad, direccionRetiro, direccionEntrega, this.file));
-    // this.navigateTo([''])
+    this.navigateTo(['pago'])
   }
 
   onImageCharged(event: any): void {

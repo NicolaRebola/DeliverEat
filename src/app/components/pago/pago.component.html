@@ -1,0 +1,48 @@
+<div class="pago-container">
+    <h1 class="subtitle primary-text">Datos de pago</h1>
+    <div class="costo-container">
+        <p class="subtitle">Costo del producto: $1000</p>
+        <p class="subtitle">Costo del envío: $1000</p>
+        <h2 class="title">Total: $2000</h2>
+    </div>
+    <div class="forma-de-pago-container">
+        <p>Elija su forma de pago: </p>
+        <mat-tab-group>
+            <mat-tab label="Efectivo">
+                <mat-form-field style="width: 100%;">
+                    <mat-label>Monto con el que abonará</mat-label>
+                    <input matInput type="text" placeholder="1000" />
+                </mat-form-field>
+            </mat-tab>
+            <mat-tab label="Tarjeta">
+                <mat-form-field style="width: 100%;">
+                    <mat-label>Nombre que figura en la tarjeta</mat-label>
+                    <input matInput type="text" placeholder="Juan Pedro Alvarez" />
+                </mat-form-field>
+                <mat-form-field style="width: 100%;">
+                    <mat-label>Número de tarjeta</mat-label>
+                    <input matInput type="text" placeholder="1111 1111 1111 1111" />
+                </mat-form-field>
+                <mat-form-field style="width: 100%;">
+                    <mat-label>Vence el</mat-label>
+                    <input matInput type="text" placeholder="05/28" />
+                </mat-form-field>
+                <mat-form-field style="width: 100%;">
+                    <mat-label>CVV</mat-label>
+                    <input matInput type="text" placeholder="999" />
+                </mat-form-field>
+            </mat-tab>
+        </mat-tab-group>
+    </div>
+    <div class="actions-container">
+        <div class="previous-button" (click)="navigateTo(['pedido-no-adherido'])">
+            <mat-icon class="primary-text prev-icon">west</mat-icon>
+        </div>
+        <div class="continue-button" (click)="setPagoDetails()">
+            <span class="continue-button_label">Continuar</span>
+            <button mat-mini-fab class="primary-button next-button" aria-label="Continuar">
+                <mat-icon>east</mat-icon>
+            </button>
+        </div>
+    </div>
+</div>

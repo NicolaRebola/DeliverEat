@@ -1,0 +1,67 @@
+.detalles-pedido-container {
+    margin: 0 0.5rem;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+.detalle-container{
+    overflow: auto;
+    flex: 1;
+}
+
+.costo-container{
+    margin: 1 2rem;
+    border: 1px solid #707070 !important;
+}
+
+.detalle-entrega-container{
+    margin: 1 2rem;
+    border: 1px solid #707070 !important;
+}
+
+.detalles-pedido-container > .subtitle{
+    text-align: center;
+    font-size: 1.2rem;
+    font-weight: 400;
+    flex: 0;
+}
+
+.detalles-pedido-container > .title{
+    font-size: 1.2rem;
+    display: flex;
+    flex-direction: row;
+    align-items: flex-end;
+    margin: 2rem 0 0 0;
+    flex: 0;
+}
+
+.actions-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    flex: 0;
+    margin-bottom: 1rem;
+}
+
+.previous-button,
+.continue-button {
+    display: flex;
+    align-items: center;
+}
+
+.prev-icon {
+    font-size: 2rem;
+    width: 2rem;
+    height: 2rem;
+}
+
+.continue-button_label {
+    margin: 0 0.5rem;
+    font-weight: 500;
+    color: #333;
+}
+
+.next-button {
+    font-size: 24px;
+    padding: 0 !important;
+}

@@ -1,0 +1,27 @@
+.confirmado-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: white;
+    height: 100vh;
+}
+  
+.icon-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.icon-container img {
+    height: 10rem;
+    aspect-ratio: 1/1;
+}
+  
+  .confirmed-text {
+    font-size: 2rem; /* Tamaño del texto grande */
+    color: black; /* Color del texto */
+    margin-top: 20px; /* Margen en la parte superior */
+    margin-bottom: 20px; /* Margen en la parte inferior */
+    text-align: center; /* Centra el texto horizontalmente */
+  }

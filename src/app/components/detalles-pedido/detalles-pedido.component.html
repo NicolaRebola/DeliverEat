@@ -1,0 +1,31 @@
+<div class="detalles-pedido-container">
+    <h1 class="subtitle primary-text">Detalles del pedido</h1>
+    <div class="detalle-container">
+        <div class="producto-container">
+            <p class="subtitle">Lugar no listado</p>
+            <h2 class="subtitle">Producto: Es una caja marrón...</h2>
+        </div>
+        <div class="costo-container">
+            <p class="subtitle">Costo del producto: $1000</p>
+            <p class="subtitle">Costo del envío: $1000</p>
+            <h2 class="subtitle">Total: $2000</h2>
+            <p class="subtitle">Abonas con: tarjeta terminada en 1111</p>
+        </div>
+        <div class="detalle-entrega-container">
+            <h2 class="subtitle">Detalle de entrega</h2>
+            <p class="subtitle">Avendida Siempre Viva 745</p>
+            <p class="subtitle">Córdoba</p>
+        </div>
+    </div>
+    <div class="actions-container">
+        <div class="previous-button" (click)="navigateTo(['pago'])">
+            <mat-icon class="primary-text prev-icon">west</mat-icon>
+        </div>
+        <div class="continue-button" (click)="navigateTo(['pedido-confirmado'])">
+            <span class="continue-button_label">Confirmar</span>
+            <button mat-mini-fab class="primary-button next-button" aria-label="Confirmar">
+              <mat-icon>east</mat-icon>
+            </button>
+        </div>
+    </div>            
+</div>
