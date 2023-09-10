@@ -1,8 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { LoginService } from './login.service';
-import { Usuarios } from 'src/app/mock';
+import { LoginService } from '../../services/login.service';
 
 @Component({
   selector: 'app-login',
@@ -29,6 +28,6 @@ export class LoginComponent implements OnInit {
   }
 
   navegarHome() {
-    // this.router.navigate(['pedido', 'nuevo'])
+    this.router.navigate(['tipo-de-pedido'])
   }
 }

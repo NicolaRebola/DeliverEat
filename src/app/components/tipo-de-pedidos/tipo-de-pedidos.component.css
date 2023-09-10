@@ -1,0 +1,39 @@
+.pedidos-selector-container {
+    display: flex;
+    flex-direction: column;
+    margin: auto;
+    width: max(280px, 80%);
+    justify-content: center;
+    height: 100%;
+}
+
+.logo-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.logo-container img {
+    height: 10rem;
+    aspect-ratio: 1/1;
+}
+
+.pedidos-type-container{
+    margin: 1rem 0 2rem;
+}
+
+.pedidos_type-title {
+    text-align: center;
+    margin: 1rem 0 1.8rem;
+}
+
+.pedidos_type-subtitle {
+    text-align: center;
+    margin: 1rem 0 1.8rem;
+}
+
+.row{
+    display: flex;
+    margin: 1rem 0 1.8rem;
+    justify-content: space-between;
+}
