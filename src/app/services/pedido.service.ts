@@ -76,7 +76,7 @@ export class PedidoService {
     private pedidoActual?: Pedido;
     validarImagen(imagen: File) {
         if (imagen.size > (5 * 1000000)) throw new Error('Oops! La imagen debe pesar menos de 5MB. Vuelve a intentar!');
-        if (imagen.type !== 'image/jpg') throw new Error('Oops! La imagen debe ser JPG. Vuelve a intentar!');
+        if (imagen.type !== 'image/jpg' && imagen.type !== 'image/jpeg') throw new Error('Oops! La imagen debe ser JPG. Vuelve a intentar!');
         return true;
     }
     setPedidoActual(pedidoActual: Pedido) {

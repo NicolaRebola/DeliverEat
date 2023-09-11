@@ -17,6 +17,7 @@ import { RouterModule } from '@angular/router';
 import { TipoDePedidosComponent } from './components/tipo-de-pedidos/tipo-de-pedidos.component';
 import { PedidoNoAdheridoComponent } from './components/pedido-no-adherido/pedido-no-adherido.component';
 import { PagoComponent } from './components/pago/pago.component';
+import { FormsModule } from '@angular/forms';
 import { Servicios } from './services';
 import { Componentes } from './components';
 import { DetallesPedidoComponent } from './components/detalles-pedido/detalles-pedido.component';
@@ -39,6 +40,7 @@ import { PedidoConfirmadoComponent } from './components/pedido-confirmado/pedido
     MatTabsModule,
     MatSnackBarModule,
     ReactiveFormsModule,
+    FormsModule,
     RouterModule.forRoot([
       {path: 'login', component: LoginComponent},
       {path: 'tipo-de-pedido', component: TipoDePedidosComponent},

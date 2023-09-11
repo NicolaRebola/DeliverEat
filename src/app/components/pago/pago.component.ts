@@ -12,33 +12,31 @@ import { FormGroup, FormControl, Validators, FormBuilder } from '@angular/forms'
 })
 export class PagoComponent {
   formaPagoForm: FormGroup;
-  number? = Number;
+  number = 0;
+  tabindex = 0;
   constructor(private snackbar: MatSnackBar, private pedidoService: PedidoService, private formapago: FormaPagoService, private router: Router){
     const fb = new FormBuilder();
     this.formaPagoForm = fb.nonNullable.group({
       tipo: new FormControl("EFECTIVO", { nonNullable: true, 'validators': [Validators.required] }),
-      monto: new FormControl('', { nonNullable: true, 'validators': [Validators.required] }),
       nombre: new FormControl('', { nonNullable: true, 'validators': [Validators.required] }),
-      numeroTarjeta: new FormControl('', { nonNullable: true, 'validators': [Validators.required] }),
+      numeroTarjeta: new FormControl('', { nonNullable: true, 'validators': [Validators.required, Validators.minLength(16), Validators.maxLength(16)] , }),
       vencimiento: 0,
-      cvv:new FormControl('', { nonNullable: true, 'validators': [Validators.required] }),
+      cvv:new FormControl('', { nonNullable: true, 'validators': [Validators.required, Validators.minLength(3), Validators.maxLength(4)] }),
   })}
   navigateTo(route: string[]) {
     this.router.navigate(route);
   }
   setFormaPDetails() {
-    let { tipo, monto, nombre, numeroTarjeta, vencimiento, cvv } = this.formaPagoForm.value;
-    if (tipo == TipoPago.EFECTIVO) {
-      nombre = " ";
-      numeroTarjeta = 0;
-      vencimiento = " ";
-      cvv = 0;
+    const { tipo, monto, nombre, numeroTarjeta, vencimiento, cvv } = this.formaPagoForm.value;
+    console.log(this.tabindex)
+    console.log(this.precio())
+    console.log(this.number)
+    if (this.number < this.precio() && this.tabindex === 0) {
+      this.snackbar.open('Oops! Debe completar al menos un método de pago correctamente.', undefined, { duration: 1000, panelClass: 'error_message' })
+      return;
     }
-    if (tipo == TipoPago.TARJETA) {
-      monto = 0;
-    }
-    if (!this.formaPagoForm.valid) {
-      this.snackbar.open('Oops! Todos los campos son obligatorios.', undefined, { duration: 1000, panelClass: 'error_message' })
+    else if(!this.formaPagoForm.valid && this.tabindex === 1){
+      this.snackbar.open('Oops! Debe completar al menos un método de pago correctamente.', undefined, { duration: 1000, panelClass: 'error_message' })
       return;
     }
     
@@ -60,17 +58,8 @@ export class PagoComponent {
     return this.pedidoService.getDist();
   }
 
-  precio() {
-    const total = ((Number(this.pedidoService.getDist())/100) * 50).toFixed(2);
+  precio():number {
+    const total = Number(((Number(this.pedidoService.getDist())/100) * 50).toFixed(2));
     return total
   }
-
-  onEfectCharged(event: any): void {
-    const val = event.value;
-    try {
-      this.pedidoService.validarMontoEfectivo(val);
-      this.number = val;
-    } catch(err: any) {
-      this.snackbar.open(err.message, undefined, { duration: 1000, panelClass: 'error_message' })
-    }
-}}
+}
