@@ -1,9 +1,30 @@
+img {
+  animation-duration: 1s;
+  animation-name: slidein;
+  animation-iteration-count: infinite;
+  animation-direction: alternate;
+}
+
+@keyframes slidein {
+  from {
+    margin-top: 0%;
+    width: 0%;    
+  }
+
+  to {
+    margin-bottom: 0%;
+    width: 100%;
+  }
+}
+
 .confirmado-container {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    background-color: white;
+    transition-property: background-color;
+    transition-duration: 3s;
+    background-color: rgb(255, 255, 255);
     height: 100vh;
 }
   
@@ -20,7 +41,7 @@
   
   .confirmed-text {
     font-size: 2rem; /* Tamaño del texto grande */
-    color: black; /* Color del texto */
+    color: rgb(0, 0, 0); /* Color del texto */
     margin-top: 20px; /* Margen en la parte superior */
     margin-bottom: 20px; /* Margen en la parte inferior */
     text-align: center; /* Centra el texto horizontalmente */

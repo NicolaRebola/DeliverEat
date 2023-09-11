@@ -12,4 +12,27 @@ export class DetallesPedidoComponent {
   navigateTo(route: string[]) {
     this.router.navigate(route);
   }
+  distancia() {
+    const dist = this.pedidoService.getDist();
+    return dist
+  }
+  precio() {
+    const total = ((Number(this.pedidoService.getDist())/100) * 50).toFixed(2);
+    return total
+  }
+
+  // manera no convencional de mostrar los datos 
+  descripcion() {
+    return this.pedidoService.getDescrP();
+  }
+  ciudad() {
+    return this.pedidoService.getCiudad();
+  }
+  destino() {
+    return this.pedidoService.getDomDestino();
+  }
+  origen() {
+    return this.pedidoService.getDomOrigen();
+  }
+  // fin de manera no convencional de mostrar los datos 
 }

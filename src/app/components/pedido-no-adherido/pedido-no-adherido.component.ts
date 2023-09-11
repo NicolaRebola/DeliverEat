@@ -23,6 +23,8 @@ export class PedidoNoAdheridoComponent {
       direccionEntrega: new FormControl('', { nonNullable: true, 'validators': [Validators.required] }),
       producto: new FormControl('', { nonNullable: true, 'validators': [Validators.required] }),
       direccionRetiro: new FormControl('', { nonNullable: true, 'validators': [Validators.required] }),
+      distancia: 0,
+      
     })
   }
 
@@ -31,8 +33,8 @@ export class PedidoNoAdheridoComponent {
       this.snackbar.open('Oops! Todos los campos son obligatorios.', undefined, { duration: 1000, panelClass: 'error_message' })
       return;
     }
-    const { ciudad, direccionEntrega, producto, direccionRetiro } = this.pedidoForm.value;
-    this.pedidoService.setPedidoActual(new Pedido(TipoPedido.LO_QUE_SEA, producto, ciudad, direccionRetiro, direccionEntrega, this.file));
+    const { ciudad, direccionEntrega, producto, direccionRetiro, distancia } = this.pedidoForm.value;
+    this.pedidoService.setPedidoActual(new Pedido(TipoPedido.LO_QUE_SEA, producto, ciudad, direccionRetiro, direccionEntrega, distancia, this.file));
     this.navigateTo(['pago'])
   }
 

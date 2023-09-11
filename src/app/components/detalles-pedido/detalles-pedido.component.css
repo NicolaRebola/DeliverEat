@@ -16,12 +16,14 @@
 
 .detalle-entrega-container{
     margin: 1 2rem;
+    margin-left: 0,4 rem;
     border: 1px solid #707070 !important;
 }
 
 .detalles-pedido-container > .subtitle{
     text-align: center;
     font-size: 1.2rem;
+    margin: 1 2rem;
     font-weight: 400;
     flex: 0;
 }

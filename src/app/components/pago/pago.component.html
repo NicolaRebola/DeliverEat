@@ -1,9 +1,9 @@
 <div class="pago-container">
     <h1 class="subtitle primary-text">Datos de pago</h1>
     <div class="costo-container">
-        <p class="subtitle">Costo del producto: $1000</p>
-        <p class="subtitle">Costo del envío: $1000</p>
-        <h2 class="title">Total: $2000</h2>
+        <p class="subtitle">Distancia: <label class="subtitle" [textContent]="envio()"></label>mts.</p> 
+        <p class="subtitle">Costo cada 100mts: $50 </p> 
+        <p class="title">Total: $<label class="title" [textContent]="precio()"> </label></p>
     </div>
     <div class="forma-de-pago-container">
         <p>Elija su forma de pago: </p>
@@ -11,7 +11,7 @@
             <mat-tab label="Efectivo">
                 <mat-form-field style="width: 100%;">
                     <mat-label>Monto con el que abonará</mat-label>
-                    <input matInput type="text" placeholder="1000" />
+                    <input #int matInput type="number" placeholder="1000" (change)="onEfectCharged(int)"/>
                 </mat-form-field>
             </mat-tab>
             <mat-tab label="Tarjeta">
