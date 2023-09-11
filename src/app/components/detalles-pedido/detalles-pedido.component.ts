@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { PedidoService } from 'src/app/services/pedido.service';
+import { FormaPagoService, FormaPago, TipoPago } from 'src/app/services/forma-pago.service';
 
 @Component({
   selector: 'app-detalles-pedido',
@@ -8,7 +9,7 @@ import { PedidoService } from 'src/app/services/pedido.service';
   styleUrls: ['./detalles-pedido.component.css']
 })
 export class DetallesPedidoComponent {
-  constructor(private pedidoService: PedidoService, private router: Router){}
+  constructor(private pedidoService: PedidoService, private formaPagoService: FormaPagoService, private router: Router){}
   navigateTo(route: string[]) {
     this.router.navigate(route);
   }
@@ -33,6 +34,9 @@ export class DetallesPedidoComponent {
   }
   origen() {
     return this.pedidoService.getDomOrigen();
+  }
+  tipoPago() {
+    return this.formaPagoService.getTipo();
   }
   // fin de manera no convencional de mostrar los datos 
 }

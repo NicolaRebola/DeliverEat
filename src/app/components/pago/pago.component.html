@@ -7,38 +7,43 @@
     </div>
     <div class="forma-de-pago-container">
         <p>Elija su forma de pago: </p>
-        <mat-tab-group>
-            <mat-tab label="Efectivo">
-                <mat-form-field style="width: 100%;">
-                    <mat-label>Monto con el que abonará</mat-label>
-                    <input #int matInput type="number" placeholder="1000" (change)="onEfectCharged(int)"/>
-                </mat-form-field>
-            </mat-tab>
-            <mat-tab label="Tarjeta">
-                <mat-form-field style="width: 100%;">
-                    <mat-label>Nombre que figura en la tarjeta</mat-label>
-                    <input matInput type="text" placeholder="Juan Pedro Alvarez" />
-                </mat-form-field>
-                <mat-form-field style="width: 100%;">
-                    <mat-label>Número de tarjeta</mat-label>
-                    <input matInput type="text" placeholder="1111 1111 1111 1111" />
-                </mat-form-field>
-                <mat-form-field style="width: 100%;">
-                    <mat-label>Vence el</mat-label>
-                    <input matInput type="text" placeholder="05/28" />
-                </mat-form-field>
-                <mat-form-field style="width: 100%;">
-                    <mat-label>CVV</mat-label>
-                    <input matInput type="text" placeholder="999" />
-                </mat-form-field>
-            </mat-tab>
-        </mat-tab-group>
+        <form [formGroup]="formaPagoForm" (ngSubmit)="setFormaPDetails()">
+            <mat-form-field style="width: 100%;">
+                <mat-tab-group>
+                    <mat-tab label="Efectivo" >
+                        <mat-form-field style="width: 100%;"  value="EFECTIVO">
+                            <mat-label>Monto con el que abonará</mat-label>
+                            <input #int matInput type="number" formControlName="monto" (change)="onEfectCharged(int)"/>
+                        </mat-form-field>
+                    </mat-tab>
+                    <mat-tab label="Tarjeta" >
+                        <mat-form-field style="width: 100%;"  value="TARJETA">
+                            <mat-label>Nombre que figura en la tarjeta</mat-label>
+                            <input matInput type="text" formControlName="nombre" />
+                        </mat-form-field>
+                        <mat-form-field style="width: 100%;">
+                            <mat-label>Número de tarjeta</mat-label>
+                            <input matInput type="number" formControlName="numeroTarjeta" minlength="13"  maxlength="18" />
+                        </mat-form-field>
+                        <mat-form-field style="width: 100%;">
+                            <mat-label>Vence el</mat-label>
+                            <input matInput type="datetime" formControlName="vencimiento"  />
+                        </mat-form-field>
+                        <mat-form-field style="width: 100%;">
+                            <mat-label>CVV</mat-label>
+                            <input matInput type="text" formControlName="cvv" placeholder="999" />
+                        </mat-form-field>
+                    </mat-tab>
+                </mat-tab-group>
+            </mat-form-field>
+        </form>
+
     </div>
     <div class="actions-container">
         <div class="previous-button" (click)="navigateTo(['pedido-no-adherido'])">
             <mat-icon class="primary-text prev-icon">west</mat-icon>
         </div>
-        <div class="continue-button" (click)="setPagoDetails()">
+        <div class="continue-button" (click)="setFormaPDetails()">
             <span class="continue-button_label">Continuar</span>
             <button mat-mini-fab class="primary-button next-button" aria-label="Continuar">
                 <mat-icon>east</mat-icon>

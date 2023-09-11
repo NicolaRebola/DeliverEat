@@ -12,7 +12,7 @@ export class Pedido {
     private _ciudad: string;
     private _direccionRetiro: string;
     private _direccionEntrega: string;
-    private _distancia: number | undefined;
+    private _distancia?: number | undefined;
 
     public get tipo(): string {
         return this._tipo;
