@@ -24,15 +24,21 @@
                         </mat-form-field>
                         <mat-form-field style="width: 100%;">
                             <mat-label>Número de tarjeta</mat-label>
-                            <input matInput type="number" formControlName="numeroTarjeta" minlength="13"
-                                maxlength="18" />
+                            <input matInput type="number" formControlName="numeroTarjeta" length="16" />                        
                         </mat-form-field>
+                        <label class="subtitle">Solo se aceptan tarjetas VISA</label>
+                        <mat-label class="subtitle"><p>Vencimiento</p></mat-label>
+                        <div style="display: flex;flex-direction: row; align-items: center; justify-content: flex-start;">  
+                            <mat-form-field style="width: 30%;"> 
+                                <input matInput type="text" value="2023-09" maxlength="2" minlength="2" formControlName="vencimiento">
+                            </mat-form-field><span class="subtitle" style="font-size: 1.5rem; margin: 0 0.5rem;">/</span>
+                            <mat-form-field style="width: 30%; ">
+                                <input matInput type="text" value="2023-09" maxlength="2" minlength="2" formControlName="vencimiento">  
+                            </mat-form-field>
+                        </div>
+                        
                         <mat-form-field style="width: 100%;">
-                            <mat-label>Vence el</mat-label>
-                            <input matInput type="datetime" formControlName="vencimiento" />
-                        </mat-form-field>
-                        <mat-form-field style="width: 100%;">
-                            <mat-label>CVV</mat-label>
+                            <mat-label>CVC</mat-label>
                             <input matInput type="text" formControlName="cvv" />
                         </mat-form-field>
                     </form>

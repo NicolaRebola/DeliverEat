@@ -9,11 +9,15 @@ import { FormGroup, FormControl, Validators, FormBuilder } from '@angular/forms'
   selector: 'app-pago',
   templateUrl: './pago.component.html',
   styleUrls: ['./pago.component.css']
+  
 })
+
 export class PagoComponent {
   formaPagoForm: FormGroup;
   number = 0;
   tabindex = 0;
+
+  today = new Date();
   constructor(private snackbar: MatSnackBar, private pedidoService: PedidoService, private formapago: FormaPagoService, private router: Router){
     const fb = new FormBuilder();
     this.formaPagoForm = fb.nonNullable.group({
@@ -62,4 +66,7 @@ export class PagoComponent {
     const total = Number(((Number(this.pedidoService.getDist())/100) * 50).toFixed(2));
     return total
   }
+  
+
+
 }
