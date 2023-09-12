@@ -24,7 +24,7 @@ export class PagoComponent implements OnInit {
     this.formaPagoForm = fb.nonNullable.group({
       nombre: new FormControl('', { nonNullable: true, 'validators': [Validators.required] }),
       numeroTarjeta: new FormControl('', { nonNullable: true, 'validators': [Validators.required, Validators.minLength(16), Validators.maxLength(16)] , }),
-      año_vencimiento: new FormControl('23', { nonNullable: true, 'validators': [Validators.required, Validators.minLength(2), Validators.maxLength(2)]}),
+      año_vencimiento: new FormControl('2023', { nonNullable: true, 'validators': [Validators.required, Validators.minLength(4), Validators.maxLength(4)]}),
       mes_vencimiento: new FormControl('09', { nonNullable: true, 'validators': [Validators.required, Validators.minLength(2), Validators.maxLength(2)]}),
       cvc:new FormControl('', { nonNullable: true, 'validators': [Validators.required, Validators.min(0), Validators.max(999)] }),
     });  
@@ -51,7 +51,8 @@ export class PagoComponent implements OnInit {
   }
 
   esTarjetaVencida(mes: string, año: string): boolean {
-    return año < '23' || (año === '23' && mes < '09');
+    const currentDate = new Date();
+    return Number(año) < currentDate.getFullYear() || (Number(año) === currentDate.getFullYear() && Number(mes) < (currentDate.getMonth()+1));
   }
 
   ngOnInit(): void {
@@ -94,14 +95,14 @@ export class PagoComponent implements OnInit {
 
   validarMes() {
     const mes = this.formaPagoForm.value.mes_vencimiento;
-    if (!this.esNumero(mes) || !(parseInt(mes) >= 1 && parseInt(mes) <= 12) ) {
+    if (!mes.match(/([0-9]){2}$/) || !(parseInt(mes) >= 1 && parseInt(mes) <= 12) ) {
       this.formaPagoForm.controls['mes_vencimiento'].setErrors({'incorrect': true});
     }
   }
 
   validarAnio() {
     const anio = this.formaPagoForm.value.año_vencimiento;
-    if (!this.esNumero(anio) || !(parseInt(anio) >= 23 && parseInt(anio) <= 99) ) {
+    if (!anio.match(/([0-9]){4}$/) || !(parseInt(anio) >= 2023) ) {
       this.formaPagoForm.controls['año_vencimiento'].setErrors({'incorrect': true});
     }
   }

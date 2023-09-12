@@ -50,7 +50,6 @@ export class DetallesPedidoComponent {
   }
 
   montoAbonado() {
-    console.info(this.formaPagoService.getMontoAbonado())
     return this.formaPagoService.getMontoAbonado();
   }
   // fin de manera no convencional de mostrar los datos 
