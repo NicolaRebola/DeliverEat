@@ -4,7 +4,6 @@ import { Router } from '@angular/router';
 import { Pedido, PedidoService } from 'src/app/services/pedido.service';
 import { FormaPagoService, FormaPago, TipoPago } from 'src/app/services/forma-pago.service';
 import { FormGroup, FormControl, Validators, FormBuilder } from '@angular/forms';
-import { NgxMatDatetimepicker } from '@angular-material-components/datetime-picker';
 
 @Component({
   selector: 'app-pago',
@@ -24,7 +23,7 @@ export class PagoComponent implements OnInit {
     this.formaPagoForm = fb.nonNullable.group({
       nombre: new FormControl('', { nonNullable: true, 'validators': [Validators.required] }),
       numeroTarjeta: new FormControl('', { nonNullable: true, 'validators': [Validators.required, Validators.minLength(16), Validators.maxLength(16)] , }),
-      año_vencimiento: new FormControl('23', { nonNullable: true, 'validators': [Validators.required, Validators.minLength(2), Validators.maxLength(2)]}),
+      año_vencimiento: new FormControl('2023', { nonNullable: true, 'validators': [Validators.required, Validators.minLength(4), Validators.maxLength(4)]}),
       mes_vencimiento: new FormControl('09', { nonNullable: true, 'validators': [Validators.required, Validators.minLength(2), Validators.maxLength(2)]}),
       cvc:new FormControl('', { nonNullable: true, 'validators': [Validators.required, Validators.min(0), Validators.max(999)] }),
     });  
@@ -51,7 +50,8 @@ export class PagoComponent implements OnInit {
   }
 
   esTarjetaVencida(mes: string, año: string): boolean {
-    return año < '23' || (año === '23' && mes < '09');
+    const currentDate = new Date();
+    return Number(año) < currentDate.getFullYear() || (Number(año) === currentDate.getFullYear() && Number(mes) < (currentDate.getMonth()+1));
   }
 
   ngOnInit(): void {
@@ -94,14 +94,14 @@ export class PagoComponent implements OnInit {
 
   validarMes() {
     const mes = this.formaPagoForm.value.mes_vencimiento;
-    if (!this.esNumero(mes) || !(parseInt(mes) >= 1 && parseInt(mes) <= 12) ) {
+    if (!mes.match(/([0-9]){2}$/) || !(parseInt(mes) >= 1 && parseInt(mes) <= 12) ) {
       this.formaPagoForm.controls['mes_vencimiento'].setErrors({'incorrect': true});
     }
   }
 
   validarAnio() {
     const anio = this.formaPagoForm.value.año_vencimiento;
-    if (!this.esNumero(anio) || !(parseInt(anio) >= 23 && parseInt(anio) <= 99) ) {
+    if (!anio.match(/([0-9]){4}$/) || !(parseInt(anio) >= 2023) ) {
       this.formaPagoForm.controls['año_vencimiento'].setErrors({'incorrect': true});
     }
   }
@@ -115,20 +115,6 @@ export class PagoComponent implements OnInit {
 
   esNumero(data: string) {
     return data.match(/([0-9]){2}$/);
-  }
-
-  showCalendar(picker: NgxMatDatetimepicker<Date>) {
-    picker.closedStream.subscribe(() => {
-      // today = 12/9/2023 04:20 | defaultDate = 12/09/2023 03:20
-      // today - defaultDate < 1hs ==> falla
-      const actualDate = new Date();
-      const isValid = (this.today.getTime() - actualDate.getTime()) / (1000 * 60 * 60) >= 1
-      if (this.today < actualDate || !isValid) {
-        this.snackbar.open('El pedido puede solo programarse para dentro de 1 hs mínimo.', undefined, { duration: 1000, panelClass: 'error_message' });
-        this.resetToday();
-      }
-    })
-    picker.open();
   }
   
   getFecha() {

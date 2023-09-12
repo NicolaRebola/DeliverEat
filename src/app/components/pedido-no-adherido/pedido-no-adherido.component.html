@@ -9,17 +9,28 @@
         <div class="file-container">
             <div style="display: flex; align-items: flex-end; flex-direction: row; justify-content: center;">
                 <img src="../../../assets/icons/image.svg" class="image-icon">
-                <input #imageCtrl type="file" class="file-control" multiple accept="image/jpg" (change)="onImageCharged(imageCtrl)">
+                <input #imageCtrl type="file" class="file-control" multiple accept="image/jpg"
+                    (change)="onImageCharged(imageCtrl)">
             </div>
             <p class="file-hint primary-text">Agrega una imagen para ayudar a identificar tu pedido</p>
         </div>
-        <p class="title" matTooltip="El tiempo mínimo es de 1 hora" [matTooltipPosition]="'below'">¿Cuándo lo necesitas?</p>
-        <mat-form-field style="width: 100%;">
-            <mat-select formControlName="formaEntrega">
-                <mat-option [value]="'LO_ANTES_POSIBLE'">Lo antes posible</mat-option>
-                <mat-option [value]="'PROGRAMAR'">Programar entrega</mat-option>
-            </mat-select>
-        </mat-form-field>
+        <p class="title" matTooltip="El tiempo mínimo es de 1 hora" [matTooltipPosition]="'below'">¿Cuándo lo necesitas?
+        </p>
+        <div style="display: flex; flex-direction: row;">
+            <mat-form-field style="width: 100%;">
+                <mat-select formControlName="formaEntrega">
+                    <mat-option [value]="'LO_ANTES_POSIBLE'">Lo antes posible</mat-option>
+                    <mat-option [value]="'PROGRAMAR'">Programar entrega</mat-option>
+                </mat-select>
+            </mat-form-field>
+            <img *ngIf="pedidoForm.value.formaEntrega === 'PROGRAMAR'" style="width: 28px;"
+                src="../../../assets/icons/edit_calendar.svg" (click)="showCalendar(picker)" />
+            <div style="display: none;">
+                <input [ngxMatDatetimePicker]="picker" formControlName="horaEntrega">
+                <ngx-mat-datetime-picker #picker [stepHour]="1" [stepMinute]="15" [touchUi]="true">
+                </ngx-mat-datetime-picker>
+            </div>
+        </div>
         <mat-form-field style="width: 100%">
             <mat-label>Ciudad</mat-label>
             <mat-select formControlName="ciudad">
@@ -36,11 +47,13 @@
             </mat-form-field>
             <mat-form-field style="width: 30%">
                 <mat-label>Número</mat-label>
-                <input matInput type="text" formControlName="nroRetiro" placeholder="742" />
+                <input matInput type="text" formControlName="nroRetiro" placeholder="742"
+                    (keyup)="validarAlturaRetiro()" />
             </mat-form-field>
             <mat-form-field style="width: 100%">
                 <mat-label>Referencia</mat-label>
-                <input matInput type="text" formControlName="referenciaRetiro" placeholder="Rejas celestes y ladrillo visto" />
+                <input matInput type="text" formControlName="referenciaRetiro"
+                    placeholder="Rejas celestes y ladrillo visto" />
             </mat-form-field>
         </div>
         <div class="direccion-container">
@@ -51,11 +64,13 @@
             </mat-form-field>
             <mat-form-field style="width: 30%">
                 <mat-label>Número</mat-label>
-                <input matInput type="text" formControlName="nroEntrega" placeholder="Avenida Siempre Viva" />
+                <input matInput type="text" formControlName="nroEntrega" placeholder="Avenida Siempre Viva"
+                    (keyup)="validarAlturaEntrega()" />
             </mat-form-field>
             <mat-form-field style="width: 100%">
                 <mat-label>Referencia</mat-label>
-                <input matInput type="text" formControlName="referenciaEntrega" placeholder="Rejas celestes y ladrillo visto" />
+                <input matInput type="text" formControlName="referenciaEntrega"
+                    placeholder="Rejas celestes y ladrillo visto" />
             </mat-form-field>
         </div>
     </form>
@@ -66,7 +81,7 @@
         <div class="continue-button" (click)="setPedidoDetails()">
             <span class="continue-button_label">Continuar</span>
             <button mat-mini-fab class="primary-button next-button" aria-label="Continuar">
-              <mat-icon>east</mat-icon>
+                <mat-icon>east</mat-icon>
             </button>
         </div>
     </div>
