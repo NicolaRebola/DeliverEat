@@ -44,6 +44,13 @@ export class Direccion {
 }
 
 export class Pedido {
+    private _formaEntrega: string;
+    public get formaEntrega(): string {
+        return this._formaEntrega;
+    }
+    public set formaEntrega(value: string) {
+        this._formaEntrega = value;
+    }
     private _tipo: string;
     private _descripcionProducto: string;
     private _imagen?: File | undefined;
@@ -96,7 +103,8 @@ export class Pedido {
         return this._distancia;
     }
 
-    constructor(tipo: string, descripcionProducto: string, ciudad: string, direccionRetiro: Direccion, direccionEntrega: Direccion, distancia?: number, imagen?: File) {
+    constructor(formaEntrega: string, tipo: string, descripcionProducto: string, ciudad: string, direccionRetiro: Direccion, direccionEntrega: Direccion, distancia?: number, imagen?: File) {
+        this._formaEntrega = formaEntrega;
         this._tipo = tipo;
         this._descripcionProducto = descripcionProducto;
         this._ciudad = ciudad;

@@ -10,11 +10,28 @@
               <mat-divider style="margin: 0.5rem 0;"></mat-divider>
           </div>
         </mat-card-header>
-        <!-- <img mat-card-image src="https://material.angular.io/assets/img/examples/shiba2.jpg" alt="Photo of a Shiba Inu"> -->
         <mat-card-content>
-            <p class="subtitle" style="margin: 0;">Distancia: <label class="subtitle" [textContent]="envio()"></label>mts.</p>
-            <p class="subtitle" style="margin: 0;">Costo cada 100mts: $50 </p>
-            <p class="title" style="margin-top: 0.75rem;">Total: $<label class="title" [textContent]="precio()"> </label></p>
+            <div class="descripcion-container">
+                <div class="fecha_entrega-container">
+                    <p class="subtitle">Fecha de entrega</p>
+                    <div style="display: flex; flex-direction: row; justify-content: space-between; align-items: center;">
+                        <span class="subtitle fecha_entrega">{{ getFecha() }} <br> {{ getHora() }} </span>
+                        <img *ngIf="pedidoActual?.formaEntrega === 'PROGRAMAR'" style="width: 28px;" src="../../../assets/icons/edit_calendar.svg" (click)="showCalendar(picker)"/>
+                        <div style="display: none;">
+                            <input [ngxMatDatetimePicker]="picker" [(ngModel)]="today">
+                            <ngx-mat-datetime-picker #picker [stepHour]="1" [stepMinute]="15" [touchUi]="true">
+                            </ngx-mat-datetime-picker>
+                        </div>
+                    </div>
+                </div>
+                <div class="costo-container">
+                    <p class="subtitle" style="margin: 0;">Distancia: <label class="subtitle" [textContent]="envio()"></label>mts.</p>
+                    <p class="subtitle" style="margin: 0;">Costo cada 100mts: $50 </p>
+                </div>
+            </div>
+            <div class="total-container">
+                <p class="title" style="margin-bottom: 0; margin-top: 0.75rem; text-align: center;">Total: $<label class="title" [textContent]="precio()"> </label></p>
+            </div>
         </mat-card-content>
     </mat-card>
     <p class="primary-text subtitle">Elija su forma de pago: </p>

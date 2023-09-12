@@ -89,3 +89,25 @@
 mat-hint.subtitle {
     margin: 0 !important;
 }
+
+.descripcion-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-top: 0.75rem;
+}
+
+.fecha_entrega-container {
+    width: 40%;
+}
+
+.costo-container {
+    width: 50%;
+    text-align: end;
+}
+
+.fecha_entrega-container p.subtitle,
+.fecha_entrega {
+    font-weight: 500;
+    margin: 0 !important;
+}

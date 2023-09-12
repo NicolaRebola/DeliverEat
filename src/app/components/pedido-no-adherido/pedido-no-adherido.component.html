@@ -13,6 +13,13 @@
             </div>
             <p class="file-hint primary-text">Agrega una imagen para ayudar a identificar tu pedido</p>
         </div>
+        <p class="title" matTooltip="El tiempo mínimo es de 1 hora" [matTooltipPosition]="'below'">¿Cuándo lo necesitas?</p>
+        <mat-form-field style="width: 100%;">
+            <mat-select formControlName="formaEntrega">
+                <mat-option [value]="'LO_ANTES_POSIBLE'">Lo antes posible</mat-option>
+                <mat-option [value]="'PROGRAMAR'">Programar entrega</mat-option>
+            </mat-select>
+        </mat-form-field>
         <mat-form-field style="width: 100%">
             <mat-label>Ciudad</mat-label>
             <mat-select formControlName="ciudad">
