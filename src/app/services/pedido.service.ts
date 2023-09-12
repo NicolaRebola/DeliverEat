@@ -83,7 +83,9 @@ export class PedidoService {
         this.pedidoActual = pedidoActual;
         console.info(this.pedidoActual);
     }
-
+    getPedidoActual(): Pedido | undefined {
+        return this.pedidoActual;
+    }
 // completamente hardcodeado y añadido de la manera menos aceptable posible, funciona, no conozco otra manera
     setDist(c: number){
         if (this.pedidoActual != undefined) {

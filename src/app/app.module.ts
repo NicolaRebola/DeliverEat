@@ -22,7 +22,7 @@ import { Servicios } from './services';
 import { Componentes } from './components';
 import { DetallesPedidoComponent } from './components/detalles-pedido/detalles-pedido.component';
 import { PedidoConfirmadoComponent } from './components/pedido-confirmado/pedido-confirmado.component';
-
+import {MatCardModule} from '@angular/material/card';
 @NgModule({
   declarations: [
     AppComponent,
@@ -40,6 +40,7 @@ import { PedidoConfirmadoComponent } from './components/pedido-confirmado/pedido
     MatTabsModule,
     MatSnackBarModule,
     ReactiveFormsModule,
+    MatCardModule,
     FormsModule,
     RouterModule.forRoot([
       {path: 'login', component: LoginComponent},

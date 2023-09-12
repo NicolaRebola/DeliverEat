@@ -1,9 +1,9 @@
 import { Injectable } from "@angular/core";
 import { PedidoService } from 'src/app/services/pedido.service';
 
-export const TipoPago = {
-    EFECTIVO: 'EFECTIVO',
-    TARJETA: 'TARJETA'
+export enum TipoPago {
+    'EFECTIVO',
+    'TARJETA',
 }
 
 export class FormaPago {
@@ -11,7 +11,7 @@ export class FormaPago {
     private _monto?: number | undefined;
     private _nombre?: string | undefined;
     private _numeroTarjeta?: string | undefined;
-    private _vencimiento?: Date | undefined;
+    private _vencimiento?: string | undefined;
     private _CVV?: number | undefined;
 
     public get tipo(): string {
@@ -38,10 +38,10 @@ export class FormaPago {
     public set numeroTarjeta(value: string | undefined) {
         this._numeroTarjeta = value;
     }
-    public get vencimiento(): Date | undefined {
+    public get vencimiento(): string | undefined {
         return this._vencimiento;
     }
-    public set vencimiento(value: Date | undefined) {
+    public set vencimiento(value: string | undefined) {
         this._vencimiento = value;
     }
 
@@ -53,7 +53,7 @@ export class FormaPago {
         this._CVV = value;
     }
 
-    constructor(tipo: string, monto?: number | undefined, nombre?: string | undefined, numeroTarjeta?: string | undefined, vencimiento?: Date | undefined, CVV?: number | undefined) {
+    constructor(tipo: string, monto?: number | undefined, nombre?: string | undefined, numeroTarjeta?: string | undefined, vencimiento?: string | undefined, CVV?: number | undefined) {
         this._tipo = tipo;
         this._monto = monto
         this._nombre = nombre;

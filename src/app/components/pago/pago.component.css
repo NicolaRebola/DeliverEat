@@ -5,9 +5,10 @@
     height: 100%;
 }
 
-.costo-container{
-    margin: 0 0.5rem;
-    border: 1px solid #707070 !important;
+
+
+.detalle-carta {
+    border: 0.1rem #d8d8d8 solid;
 }
 
 .costo-container > .subtitle{
@@ -20,16 +21,22 @@
 
 .forma-de-pago-container{
     overflow: auto;
-    flex: 1;
+    flex: 1;    
+    display: flex;
+    flex-direction: column;
 }
 
-.pago-container > .subtitle {
+.pago-container > h1.subtitle {
     text-align: center;
     font-size: 1.2rem;
     font-weight: 400;
     flex: 0;
     margin-top: 1rem;
     margin-bottom: 1rem;
+}
+
+.pago-container > mat-tab-group {
+    flex: 1;
 }
 
 .pago-container > .title {
@@ -71,4 +78,14 @@
 .next-button {
     font-size: 24px;
     padding: 0 !important;
+}
+
+:host .subtitle {
+    margin-bottom: 0;
+    font-weight: 500;
+    margin-top: 2rem;
+}
+
+mat-hint.subtitle {
+    margin: 0 !important;
 }
