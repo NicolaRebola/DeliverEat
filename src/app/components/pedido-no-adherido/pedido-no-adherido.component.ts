@@ -15,10 +15,12 @@ export class PedidoNoAdheridoComponent {
   file?: File;
   ciudades = Ciudades;
   pedidoForm: FormGroup;
+  pedidoActual?: Pedido;
 
   constructor(private snackbar: MatSnackBar, private pedidoService: PedidoService, private router: Router) {
     const fb = new FormBuilder();
     this.pedidoForm = fb.nonNullable.group({
+      formaEntrega: new FormControl('LO_ANTES_POSIBLE', { nonNullable: true, 'validators': [Validators.required] }),
       ciudad: new FormControl('', { nonNullable: true, 'validators': [Validators.required] }),
       producto: new FormControl('', { nonNullable: true, 'validators': [Validators.required] }),
       calleRetiro: new FormControl('', { nonNullable: true, 'validators': [Validators.required] }),
@@ -28,7 +30,8 @@ export class PedidoNoAdheridoComponent {
       nroEntrega: new FormControl('', { nonNullable: true, 'validators': [Validators.required] }),
       referenciaEntrega: new FormControl('', { nonNullable: true }),
       distancia: 0,
-    })
+    });
+    this.pedidoActual = pedidoService.getPedidoActual();
   }
 
   setPedidoDetails() {
@@ -36,10 +39,10 @@ export class PedidoNoAdheridoComponent {
       this.snackbar.open('Oops! Todos los campos son obligatorios.', undefined, { duration: 1000, panelClass: 'error_message' })
       return;
     }
-    const { ciudad, producto, calleRetiro, nroRetiro, referenciaRetiro, calleEntrega, nroEntrega, referenciaEntrega, distancia }  = this.pedidoForm.value;
+    const { formaEntrega, ciudad, producto, calleRetiro, nroRetiro, referenciaRetiro, calleEntrega, nroEntrega, referenciaEntrega, distancia }  = this.pedidoForm.value;
     const direccionEntrega = new Direccion(calleEntrega, ciudad, nroEntrega, referenciaEntrega);
     const direccionRetiro = new Direccion(calleRetiro, ciudad, nroRetiro, referenciaRetiro);
-    this.pedidoService.setPedidoActual(new Pedido(TipoPedido.LO_QUE_SEA, producto, ciudad, direccionRetiro, direccionEntrega, distancia, this.file));
+    this.pedidoService.setPedidoActual(new Pedido(formaEntrega, TipoPedido.LO_QUE_SEA, producto, ciudad, direccionRetiro, direccionEntrega, distancia, this.file));
     this.navigateTo(['pago'])
   }
 

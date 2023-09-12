@@ -23,6 +23,10 @@ import { Componentes } from './components';
 import { DetallesPedidoComponent } from './components/detalles-pedido/detalles-pedido.component';
 import { PedidoConfirmadoComponent } from './components/pedido-confirmado/pedido-confirmado.component';
 import {MatCardModule} from '@angular/material/card';
+import {MatDatepickerModule} from '@angular/material/datepicker';
+import {MatNativeDateModule} from '@angular/material/core';
+import {NgxMatDatetimePickerModule, NgxMatNativeDateModule } from '@angular-material-components/datetime-picker';
+import {MatTooltipModule} from '@angular/material/tooltip';
 @NgModule({
   declarations: [
     AppComponent,
@@ -39,8 +43,13 @@ import {MatCardModule} from '@angular/material/card';
     MatIconModule,
     MatTabsModule,
     MatSnackBarModule,
+    NgxMatNativeDateModule,
     ReactiveFormsModule,
     MatCardModule,
+    MatDatepickerModule,
+    MatNativeDateModule,
+    NgxMatDatetimePickerModule,
+    MatTooltipModule,
     FormsModule,
     RouterModule.forRoot([
       {path: 'login', component: LoginComponent},
@@ -52,7 +61,7 @@ import {MatCardModule} from '@angular/material/card';
       {path: '', redirectTo: '/login', pathMatch: 'full'},
     ]),
   ],
-  providers: [...Servicios],
+  providers: [...Servicios ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
