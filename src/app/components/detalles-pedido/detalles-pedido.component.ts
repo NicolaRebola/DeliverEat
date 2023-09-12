@@ -35,6 +35,12 @@ export class DetallesPedidoComponent {
   origen() {
     return this.pedidoService.getDomOrigen();
   }
+  referenciaDestino() {
+    return this.pedidoService.getDomDestino();
+  }
+  referenciaOrigen() {
+    return this.pedidoService.getDomOrigen();
+  }
   tipoPago() {
     return this.formaPagoService.getTipo();
   }

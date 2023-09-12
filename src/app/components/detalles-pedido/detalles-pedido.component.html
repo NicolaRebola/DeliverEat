@@ -15,8 +15,16 @@
         <div class="detalle-entrega-container">
             <h2 class="subtitle">Detalle de entrega</h2>
             <p class="subtitle">Ciudad: <label [textContent]="(ciudad())"></label></p>
-            <p class="subtitle">Domicilio de retiro: <label [textContent]="(origen())"></label></p>
-            <p class="subtitle">Domicilio de entrega: <label [textContent]="(destino())"></label></p>
+            <p class="subtitle">
+                Domicilio de retiro: <label [textContent]="(origen())"></label>
+                <br/>
+                Referencia: <label [textContent]="(referenciaOrigen())"></label>
+            </p>
+            <p class="subtitle">
+                Domicilio de entrega: <label [textContent]="(destino())"></label>
+                <br/>
+                Referencia: <label [textContent]="(referenciaDestino())"></label>
+            </p>
         </div>
     </div>
     <div class="actions-container">
