@@ -5,7 +5,7 @@
             <div style="display: flex; flex-direction: column; width: 100%;">
                 <div style="display: flex; align-items: center; justify-content: center; padding-right: 40px;">
                     <img mat-card-avatar style="margin: 0 0.5rem;" src="../../../assets/icons/motito_icono.png">
-                    <mat-card-title class="title" style="text-align: center; font-size: 1.2rem;"> Delivery {{ pedidoActual?.tipo }}</mat-card-title>
+                    <mat-card-title class="title" style="text-align: center; font-size: 1.2rem;"> Delivery </mat-card-title>
                 </div>
               <mat-divider style="margin: 0.5rem 0;"></mat-divider>
           </div>
@@ -24,7 +24,7 @@
             <mat-tab label="Efectivo">
                 <mat-form-field style="width: 100%; margin: 0.5rem 0;" value="EFECTIVO">
                     <mat-label>Monto con el que abonará</mat-label>
-                    <input #int matInput type="number" [(ngModel)]="number" />
+                    <input #int matInput type="number" [(ngModel)]="monto"/>
                 </mat-form-field>
             </mat-tab>
             <mat-tab label="Tarjeta">

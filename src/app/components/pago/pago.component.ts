@@ -8,13 +8,12 @@ import { FormGroup, FormControl, Validators, FormBuilder } from '@angular/forms'
 @Component({
   selector: 'app-pago',
   templateUrl: './pago.component.html',
-  styleUrls: ['./pago.component.css']
-  
+  styleUrls: ['./pago.component.css'],
 })
 
 export class PagoComponent implements OnInit {
   formaPagoForm: FormGroup;
-  number = 0;
+  monto = 0;
   tabindex = 0;
   pedidoActual?: Pedido;
   today = new Date();
@@ -34,8 +33,8 @@ export class PagoComponent implements OnInit {
     this.router.navigate(route);
   }
   setFormaPDetails() {
-    const { monto, nombre, numeroTarjeta, año_vencimiento, mes_vencimiento, cvc } = this.formaPagoForm.value;
-    if (this.tabindex === 0 && this.number < this.precio()) {
+    const { nombre, numeroTarjeta, año_vencimiento, mes_vencimiento, cvc } = this.formaPagoForm.value;
+    if (this.tabindex === 0 && this.monto < this.precio()) {
       this.snackbar.open('Oops! El monto a ingresar debe ser mayor o igual al Total.', undefined, { duration: 1000, panelClass: 'error_message' })
       return;
     }
@@ -46,8 +45,7 @@ export class PagoComponent implements OnInit {
 
     const vencimiento: string = `${mes_vencimiento}/${año_vencimiento}`;
     const tipo = TipoPago[this.tabindex];
-    console.info(tipo);
-    this.formapago.setFormaDePagoActual(new FormaPago(tipo, monto, nombre, numeroTarjeta, vencimiento, cvc));
+    this.formapago.setFormaDePagoActual(new FormaPago(tipo, this.monto, nombre, numeroTarjeta, vencimiento, cvc));
     this.navigateTo(['detalles-pedido'])
   }
 
