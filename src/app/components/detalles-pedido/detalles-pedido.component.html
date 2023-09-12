@@ -1,0 +1,31 @@
+<div class="detalles-pedido-container">
+    <h1 class="subtitle primary-text">Detalles del pedido</h1>
+    <div class="detalle-container">
+        <div class="producto-container">
+            <h3>Lugar no listado</h3>
+            <h2 class="subtitle">Producto: <label [textContent]="(descripcion())"></label></h2>
+        </div>
+        <div class="costo-container">
+            <p class="subtitle">Distancia: <label [textContent]="(distancia())"></label>mts.</p>
+            <h2 class="subtitle">Total: $<label [textContent]="(precio())"></label></h2>           
+            <p class="subtitle">Abonas con: <label [textContent]="(tipoPago())"></label></p>
+        </div>
+        <div class="detalle-entrega-container">
+            <h2 class="subtitle">Detalle de entrega</h2>
+            <p class="subtitle">Domicilio de retiro: <label [textContent]="(origen())"></label></p>
+            <p class="subtitle">Domicilio de entrega: <label [textContent]="(destino())"></label></p>
+            <p class="subtitle">Ciudad: <label [textContent]="(ciudad())"></label></p>
+        </div>
+    </div>
+    <div class="actions-container">
+        <div class="previous-button" (click)="navigateTo(['pago'])">
+            <mat-icon class="primary-text prev-icon">west</mat-icon>
+        </div>
+        <div class="continue-button" (click)="navigateTo(['pedido-confirmado'])">
+            <span class="continue-button_label">Confirmar</span>
+            <button mat-mini-fab class="primary-button next-button" aria-label="Confirmar">
+              <mat-icon>east</mat-icon>
+            </button>
+        </div>
+    </div>            
+</div>

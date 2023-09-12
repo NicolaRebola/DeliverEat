@@ -1,4 +1,6 @@
 export const Ciudades: string[] = [
     'Córdoba',
-    'Buenos Aires'
+    'Buenos Aires',
+    'Rosario',
+    'Santa Fe',
 ];

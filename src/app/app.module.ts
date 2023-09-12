@@ -9,19 +9,24 @@ import {MatInputModule} from '@angular/material/input';
 import {MatDividerModule} from '@angular/material/divider';
 import {MatSelectModule} from '@angular/material/select';  
 import {MatIconModule} from '@angular/material/icon'; 
+import {MatTabsModule} from '@angular/material/tabs'; 
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { ReactiveFormsModule } from '@angular/forms';
 import { LoginComponent } from './components/login/login.component';
 import { RouterModule } from '@angular/router';
 import { TipoDePedidosComponent } from './components/tipo-de-pedidos/tipo-de-pedidos.component';
 import { PedidoNoAdheridoComponent } from './components/pedido-no-adherido/pedido-no-adherido.component';
+import { PagoComponent } from './components/pago/pago.component';
+import { FormsModule } from '@angular/forms';
 import { Servicios } from './services';
 import { Componentes } from './components';
-
+import { DetallesPedidoComponent } from './components/detalles-pedido/detalles-pedido.component';
+import { PedidoConfirmadoComponent } from './components/pedido-confirmado/pedido-confirmado.component';
+import {MatCardModule} from '@angular/material/card';
 @NgModule({
   declarations: [
     AppComponent,
-    Componentes,
+    ...Componentes
   ],
   imports: [
     BrowserModule,
@@ -32,12 +37,18 @@ import { Componentes } from './components';
     MatDividerModule,
     MatSelectModule,
     MatIconModule,
+    MatTabsModule,
     MatSnackBarModule,
     ReactiveFormsModule,
+    MatCardModule,
+    FormsModule,
     RouterModule.forRoot([
       {path: 'login', component: LoginComponent},
       {path: 'tipo-de-pedido', component: TipoDePedidosComponent},
       {path: 'pedido-no-adherido', component: PedidoNoAdheridoComponent},
+      {path: 'pago', component: PagoComponent},
+      {path: 'detalles-pedido', component: DetallesPedidoComponent},
+      {path: 'pedido-confirmado', component: PedidoConfirmadoComponent},
       {path: '', redirectTo: '/login', pathMatch: 'full'},
     ]),
   ],
