@@ -12,12 +12,12 @@
     flex: 0;
 }
 
-.no-adherido-container > .title {
+form > .title {
+    margin: 1rem 0 0 0;
     font-size: 1.2rem;
     display: flex;
     flex-direction: row;
     align-items: flex-end;
-    margin: 2rem 0 0 0;
     flex: 0;
 }
 
@@ -41,8 +41,6 @@
 .file-control {
     color: transparent;
     width: 36px;
-    position: absolute;
-    right: 35%;
 }
 .file-control::-webkit-file-upload-button {
     visibility: hidden;
@@ -96,4 +94,9 @@
 .next-button {
     font-size: 24px;
     padding: 0 !important;
+}
+
+.direccion-container > .title {
+    font-size: 1rem;
+    font-weight: 500;
 }

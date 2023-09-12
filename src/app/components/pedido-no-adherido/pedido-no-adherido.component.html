@@ -1,7 +1,7 @@
 <div class="no-adherido-container">
     <h1 class="subtitle primary-text">Lugar no listado</h1>
-    <p class="title">¿Qué necesitas?</p>
     <form [formGroup]="pedidoForm" (ngSubmit)="setPedidoDetails()">
+        <p class="title">¿Qué necesitas?</p>
         <mat-form-field style="width: 100%;">
             <mat-label>Producto</mat-label>
             <textarea matInput formControlName="producto" placeholder="Es una caja marrón..."></textarea>
@@ -21,14 +21,36 @@
                 </mat-option>
             </mat-select>
         </mat-form-field>
-        <mat-form-field style="width: 100%">
-            <mat-label>Dirección de retiro</mat-label>
-            <input matInput type="text" formControlName="direccionRetiro" placeholder="Avenida Siempre Viva 742" />
-        </mat-form-field>
-        <mat-form-field style="width: 100%">
-            <mat-label>Dirección de entrega</mat-label>
-            <input matInput type="text" formControlName="direccionEntrega" placeholder="Avenida Siempre Viva 742" />
-        </mat-form-field>
+        <div class="direccion-container">
+            <p class="title">Dirección de Retiro</p>
+            <mat-form-field style="width: 60%; margin-right: 5%;">
+                <mat-label>Calle</mat-label>
+                <input matInput type="text" formControlName="calleRetiro" placeholder="Avenida Siempre Viva" />
+            </mat-form-field>
+            <mat-form-field style="width: 30%">
+                <mat-label>Número</mat-label>
+                <input matInput type="text" formControlName="nroRetiro" placeholder="742" />
+            </mat-form-field>
+            <mat-form-field style="width: 100%">
+                <mat-label>Referencia</mat-label>
+                <input matInput type="text" formControlName="referenciaRetiro" placeholder="Rejas celestes y ladrillo visto" />
+            </mat-form-field>
+        </div>
+        <div class="direccion-container">
+            <p class="title">Dirección de Entrega</p>
+            <mat-form-field style="width: 60%;  margin-right: 5%;">
+                <mat-label>Calle</mat-label>
+                <input matInput type="text" formControlName="calleEntrega" placeholder="Avenida Siempre Viva" />
+            </mat-form-field>
+            <mat-form-field style="width: 30%">
+                <mat-label>Número</mat-label>
+                <input matInput type="text" formControlName="nroEntrega" placeholder="Avenida Siempre Viva" />
+            </mat-form-field>
+            <mat-form-field style="width: 100%">
+                <mat-label>Referencia</mat-label>
+                <input matInput type="text" formControlName="referenciaEntrega" placeholder="Rejas celestes y ladrillo visto" />
+            </mat-form-field>
+        </div>
     </form>
     <div class="actions-container">
         <div class="previous-button" (click)="navigateTo(['tipo-de-pedido'])">

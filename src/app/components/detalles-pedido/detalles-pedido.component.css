@@ -68,3 +68,11 @@
     font-size: 24px;
     padding: 0 !important;
 }
+
+.detalle-entrega-container > p.subtitle {
+    font-weight: 500;
+}
+
+.detalle-entrega-container > p.subtitle label {
+    font-weight: 400;
+}

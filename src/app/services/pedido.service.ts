@@ -5,13 +5,51 @@ export const TipoPedido = {
     COMERCIO_ADHERIDO: 'COMERCIO_ADHERIDO'
 }
 
+export class Direccion {
+    private _ciudad: string;
+    private _calle: string;
+    private _nro: string;
+    private _referencia: string;
+    public get calle(): string {
+        return this._calle;
+    }
+    public set calle(value: string) {
+        this._calle = value;
+    }
+    public get ciudad(): string {
+        return this._ciudad;
+    }
+    public set ciudad(value: string) {
+        this._ciudad = value;
+    }
+    public get nro(): string {
+        return this._nro;
+    }
+    public set nro(value: string) {
+        this._nro = value;
+    }
+    public get referencia(): string {
+        return this._referencia;
+    }
+    public set referencia(value: string) {
+        this._referencia = value;
+    }
+
+    constructor(calle: string, ciudad: string, nro: string, referencia: string) {
+        this._calle = calle;
+        this._ciudad = ciudad;
+        this._nro = nro;
+        this._referencia = referencia;
+    }
+}
+
 export class Pedido {
     private _tipo: string;
     private _descripcionProducto: string;
     private _imagen?: File | undefined;
     private _ciudad: string;
-    private _direccionRetiro: string;
-    private _direccionEntrega: string;
+    private _direccionRetiro: Direccion;
+    private _direccionEntrega: Direccion;
     private _distancia?: number | undefined;
 
     public get tipo(): string {
@@ -38,16 +76,16 @@ export class Pedido {
     public set ciudad(value: string) {
         this._ciudad = value;
     }
-    public get direccionRetiro(): string {
+    public get direccionRetiro(): Direccion {
         return this._direccionRetiro;
     }
-    public set direccionRetiro(value: string) {
+    public set direccionRetiro(value: Direccion) {
         this._direccionRetiro = value;
     }
-    public get direccionEntrega(): string {
+    public get direccionEntrega(): Direccion {
         return this._direccionEntrega;
     }
-    public set direccionEntrega(value: string) {
+    public set direccionEntrega(value: Direccion) {
         this._direccionEntrega = value;
     }
 
@@ -58,7 +96,7 @@ export class Pedido {
         return this._distancia;
     }
 
-    constructor(tipo: string, descripcionProducto: string, ciudad: string, direccionRetiro: string, direccionEntrega: string, distancia?: number, imagen?: File) {
+    constructor(tipo: string, descripcionProducto: string, ciudad: string, direccionRetiro: Direccion, direccionEntrega: Direccion, distancia?: number, imagen?: File) {
         this._tipo = tipo;
         this._descripcionProducto = descripcionProducto;
         this._ciudad = ciudad;
@@ -105,20 +143,26 @@ export class PedidoService {
     }
     getCiudad(){
         if (this.pedidoActual != undefined) {
-            return this.pedidoActual.ciudad;
+            return this.pedidoActual.direccionEntrega.ciudad;
           }
         return
     }
     getDomDestino(){
-        if (this.pedidoActual != undefined) {
-            return this.pedidoActual.direccionEntrega;
-          }
+        if (this.pedidoActual != undefined) 
+            return `${this.pedidoActual.direccionEntrega.calle} ${this.pedidoActual.direccionEntrega.nro}`;
         return
     }
     getDomOrigen(){
-        if (this.pedidoActual != undefined) {
-            return this.pedidoActual.direccionRetiro;
-          }
+        if (this.pedidoActual != undefined) 
+            return `${this.pedidoActual.direccionRetiro.calle} ${this.pedidoActual.direccionRetiro.nro}`;
+        return
+    }
+    getRefOrigen(){
+        if (this.pedidoActual != undefined) return this.pedidoActual.direccionRetiro.referencia;
+        return
+    }
+    getRefDestino(){
+        if (this.pedidoActual != undefined) return this.pedidoActual.direccionEntrega.referencia;
         return
     }
     // fin de zona completamente hardcodeada y añadida de la manera menos aceptable posible, funciona, no conozco otra manera
