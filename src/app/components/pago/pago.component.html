@@ -16,12 +16,6 @@
                     <p class="subtitle">Fecha de entrega</p>
                     <div style="display: flex; flex-direction: row; justify-content: space-between; align-items: center;">
                         <span class="subtitle fecha_entrega">{{ getFecha() }} <br> {{ getHora() }} </span>
-                        <img *ngIf="pedidoActual?.formaEntrega === 'PROGRAMAR'" style="width: 28px;" src="../../../assets/icons/edit_calendar.svg" (click)="showCalendar(picker)"/>
-                        <div style="display: none;">
-                            <input [ngxMatDatetimePicker]="picker" [(ngModel)]="today">
-                            <ngx-mat-datetime-picker #picker [stepHour]="1" [stepMinute]="15" [touchUi]="true">
-                            </ngx-mat-datetime-picker>
-                        </div>
                     </div>
                 </div>
                 <div class="costo-container">

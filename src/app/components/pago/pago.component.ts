@@ -4,7 +4,6 @@ import { Router } from '@angular/router';
 import { Pedido, PedidoService } from 'src/app/services/pedido.service';
 import { FormaPagoService, FormaPago, TipoPago } from 'src/app/services/forma-pago.service';
 import { FormGroup, FormControl, Validators, FormBuilder } from '@angular/forms';
-import { NgxMatDatetimepicker } from '@angular-material-components/datetime-picker';
 
 @Component({
   selector: 'app-pago',
@@ -116,20 +115,6 @@ export class PagoComponent implements OnInit {
 
   esNumero(data: string) {
     return data.match(/([0-9]){2}$/);
-  }
-
-  showCalendar(picker: NgxMatDatetimepicker<Date>) {
-    picker.closedStream.subscribe(() => {
-      // today = 12/9/2023 04:20 | defaultDate = 12/09/2023 03:20
-      // today - defaultDate < 1hs ==> falla
-      const actualDate = new Date();
-      const isValid = (this.today.getTime() - actualDate.getTime()) / (1000 * 60 * 60) >= 1
-      if (this.today < actualDate || !isValid) {
-        this.snackbar.open('El pedido puede solo programarse para dentro de 1 hs mínimo.', undefined, { duration: 1000, panelClass: 'error_message' });
-        this.resetToday();
-      }
-    })
-    picker.open();
   }
   
   getFecha() {
