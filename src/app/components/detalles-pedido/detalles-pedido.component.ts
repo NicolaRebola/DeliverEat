@@ -38,5 +38,14 @@ export class DetallesPedidoComponent {
   tipoPago() {
     return this.formaPagoService.getTipo();
   }
+
+  nroTarjeta() {
+    return this.formaPagoService.getNroTarjeta();
+  }
+
+  montoAbonado() {
+    console.info(this.formaPagoService.getMontoAbonado())
+    return this.formaPagoService.getMontoAbonado();
+  }
   // fin de manera no convencional de mostrar los datos 
 }

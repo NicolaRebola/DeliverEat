@@ -69,7 +69,6 @@ export class FormaPago {
 export class FormaPagoService {
     private formaActual?: FormaPago;
 
-
     setFormaDePagoActual(formaActual: FormaPago) {
         this.formaActual = formaActual;
         console.info(this.formaActual);
@@ -78,10 +77,19 @@ export class FormaPagoService {
 // completamente hardcodeado y añadido de la manera menos aceptable posible, funciona, no conozco otra manera
 
     getTipo(){
-        if (this.formaActual != undefined) {
-            return this.formaActual.tipo;
-          }
-        return}
+        if (this.formaActual != undefined) return this.formaActual.tipo;
+        return
+    }
+    
+    getNroTarjeta() {
+        if (this.formaActual != undefined) return this.formaActual.numeroTarjeta?.slice(-4);
+        return
+    }
+
+    getMontoAbonado(){
+        if (this.formaActual != undefined) return this.formaActual.monto;
+        return
+    }
 
 // fin de zona completamente hardcodeada y añadida de la manera menos aceptable posible, funciona, no conozco otra manera
     

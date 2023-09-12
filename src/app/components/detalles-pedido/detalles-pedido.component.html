@@ -6,15 +6,17 @@
             <h2 class="subtitle">Producto: <label [textContent]="(descripcion())"></label></h2>
         </div>
         <div class="costo-container">
+            <p class="subtitle" style="font-weight: 600;">Forma de pago: <label [textContent]="(tipoPago())"></label></p>
+            <p class="subtitle" *ngIf="tipoPago() === 'TARJETA'">Tarjeta terminada en: {{nroTarjeta()}}</p>
+            <p class="subtitle" *ngIf="tipoPago() === 'EFECTIVO'">Monto con el que abonas: ${{montoAbonado()}}</p>
             <p class="subtitle">Distancia: <label [textContent]="(distancia())"></label>mts.</p>
             <h2 class="subtitle">Total: $<label [textContent]="(precio())"></label></h2>           
-            <p class="subtitle">Abonas con: <label [textContent]="(tipoPago())"></label></p>
         </div>
         <div class="detalle-entrega-container">
             <h2 class="subtitle">Detalle de entrega</h2>
+            <p class="subtitle">Ciudad: <label [textContent]="(ciudad())"></label></p>
             <p class="subtitle">Domicilio de retiro: <label [textContent]="(origen())"></label></p>
             <p class="subtitle">Domicilio de entrega: <label [textContent]="(destino())"></label></p>
-            <p class="subtitle">Ciudad: <label [textContent]="(ciudad())"></label></p>
         </div>
     </div>
     <div class="actions-container">
